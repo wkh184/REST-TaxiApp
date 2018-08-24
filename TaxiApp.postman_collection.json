@@ -1,0 +1,1936 @@
+{
+	"info": {
+		"_postman_id": "2a4c1158-6cc5-48c6-a803-d509535875dc",
+		"name": "TaxiApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "52eab877-3cf0-4238-9f4f-8893852b9ff9",
+			"name": "User",
+			"item": [
+				{
+					"_postman_id": "d49a44d6-739e-43d3-97a8-3637712b25d5",
+					"name": "AuthenticatePositive",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Username\" : \"admin\",\n\t\"Password\" : \"admin123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/users/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"users",
+								"authenticate"
+							]
+						},
+						"description": "Authenticate using correct user ID and password."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "f4778379-c1a3-42b0-8e03-048d45feafed",
+					"name": "AuthenticateNegativePassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Username\" : \"admin\",\n\t\"Password\" : \"admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/users/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"users",
+								"authenticate"
+							]
+						},
+						"description": "Authenticate with wrong password."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "e99c50d3-4253-40a6-98ff-cd35c7f47dac",
+					"name": "AuthenticateNegativeID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Username\" : \"ad\",\n\t\"Password\" : \"admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/users/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"users",
+								"authenticate"
+							]
+						},
+						"description": "Authenticate with wrong user ID."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "21ec3ef3-cd1b-4b9f-a6c2-8dab6b3f59c9",
+					"name": "Reset",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Username\" : \"admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/users/reset",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"users",
+								"reset"
+							]
+						},
+						"description": "Reset password locked."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "d438d566-8d4c-4a7c-9ea5-a050c29f84fd",
+					"name": "Add User No Access",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Username\" : \"test1\",\n\t\"Password\" : \"password\",\n\t\"FirstName\":\"test\",\n\t\"LastName\":\"1\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"users"
+							]
+						},
+						"description": "Add User using non admin user."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "26264cc3-e3ca-4971-b390-f896dd630e41",
+					"name": "Add User Positive",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Username\" : \"test5\",\n\t\"Password\" : \"password\",\n\t\"FirstName\":\"test\",\n\t\"LastName\":\"5\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"users"
+							]
+						},
+						"description": "Add user using admin user."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "51cc9d47-9b8c-4646-9285-59442bd65485",
+					"name": "Add User Duplicate username",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Username\" : \"admin\",\n\t\"Password\" : \"password\",\n\t\"FirstName\":\"admin\",\n\t\"LastName\":\"2\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"users"
+							]
+						},
+						"description": "Add user with user ID that already exists."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "14590a9c-aa60-4ffc-b45d-5ac38f427cca",
+					"name": "Get All Users",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"users"
+							]
+						},
+						"description": "Get all users using admin role."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "0df1b20a-9559-4165-9867-0efcbd5dc7f1",
+					"name": "Get All User Unauthorised",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"users"
+							]
+						},
+						"description": "Get all user using non admin role."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "5ed80f2d-2a8a-46df-b254-143cd12dab9b",
+					"name": "Get By ID Admin",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "role",
+								"value": "admin"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"users",
+								"1"
+							]
+						},
+						"description": "Get user by user ID using admin."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "16a3d0e3-b60f-44b7-afe3-623eb65329ef",
+					"name": "Get By ID Admin ID Not found",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "role",
+								"value": "admin"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/users/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"users",
+								"3"
+							]
+						},
+						"description": "Get user by user ID using admin for an ID not existing. Return 404."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "140809aa-3fba-44f5-bc2f-be6b46fe6c0b",
+					"name": "Get By ID User",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "User",
+								"value": "user1"
+							},
+							{
+								"key": "Role",
+								"value": "user"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"users",
+								"1"
+							]
+						},
+						"description": "Get user by user ID matching logged in user."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "0d7a2872-1f55-4223-9653-b26e45cea22a",
+					"name": "Get By ID User Negative",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Role",
+								"value": "user"
+							},
+							{
+								"key": "User",
+								"value": "user1"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/users/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"users",
+								"2"
+							]
+						},
+						"description": "Get user by ID not matching logged in user."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "e045e98c-f469-4a56-a463-39319b7f71e2",
+					"name": "Get By ID User Negative Non existing user",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Role",
+								"value": "user"
+							},
+							{
+								"key": "User",
+								"value": "user3"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/users/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"users",
+								"3"
+							]
+						},
+						"description": "Get user by ID for non existing user."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"_postman_id": "cd250726-6bac-4318-93b6-0706e0092ecd",
+			"name": "Pickup Locations",
+			"item": [
+				{
+					"_postman_id": "def373c6-4de7-4fa9-9935-8e25ea0ac7fa",
+					"name": "Add Positive",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\" : \"1\",\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"LocationName\":\"School\",\n\t\"DateAdded\":\"2018-08-10T00:00:00+08:00\",\n\t\"Category\":\"Work\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations"
+							]
+						},
+						"description": "Add pick up position using user role."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "bad02d9d-b358-420d-b791-747d45e6df77",
+					"name": "Add Using Wrong Role",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\" : \"1\",\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"LocationName\":\"School\",\n\t\"DateAdded\":\"2018-08-10T00:00:00+08:00\",\n\t\"Category\":\"Work\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations"
+							]
+						},
+						"description": "Add pick location using admin role. Admin role is for user administration so should not have access to user data."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "3de7685c-f068-4270-9c8b-7c6a6456ede8",
+					"name": "Add Using Wrong ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\" : \"1\",\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"LocationName\":\"School\",\n\t\"DateAdded\":\"2018-07-20T00:00:00\",\n\t\"Category\":\"Work\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations"
+							]
+						},
+						"description": "Add pcik up location for ID not belonging to logged in user."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "d44dd3f6-763f-4095-bccb-2939d82d23e8",
+					"name": "Add Using Non ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\" : \"1\",\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"LocationName\":\"School\",\n\t\"DateAdded\":\"2018-07-20T00:00:00\",\n\t\"Category\":\"Work\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations"
+							]
+						},
+						"description": "Add pick up location for ID not existing in DB."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "2b92d6de-d2b1-4a8c-a3d9-5cef260319ba",
+					"name": "Get Using Wrong Role",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\" : \"1\",\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"LocationName\":\"School\",\n\t\"DateAdded\":\"2018-07-20T00:00:00\",\n\t\"Category\":\"Work\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations",
+								"1"
+							]
+						},
+						"description": "Get pick up location using admin role."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "25bb34c5-c951-4646-9048-30bab6916830",
+					"name": "Get Using Wrong ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\" : \"1\",\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"LocationName\":\"School\",\n\t\"DateAdded\":\"2018-07-20T00:00:00\",\n\t\"Category\":\"Work\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations",
+								"1"
+							]
+						},
+						"description": "Get pick up location for ID not belonging to logged in ID."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "c8501dc6-34b3-4f3b-8fbe-324fe8349e9d",
+					"name": "Get Using Non ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\" : \"1\",\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"LocationName\":\"School\",\n\t\"DateAdded\":\"2018-07-20T00:00:00\",\n\t\"Category\":\"Work\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations",
+								"1"
+							]
+						},
+						"description": "Get pick up location for user ID not existing in DB."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "bfa175f3-4785-429c-bb12-75378e25f7ba",
+					"name": "Get Positive",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\" : \"1\",\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"LocationName\":\"School\",\n\t\"DateAdded\":\"2018-07-20T00:00:00\",\n\t\"Category\":\"Work\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations",
+								"1"
+							]
+						},
+						"description": "Get pick up location positive test."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "529242cf-057a-4ad7-973b-71989ab59955",
+					"name": "Get Positive V2",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\" : \"1\",\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"LocationName\":\"School\",\n\t\"DateAdded\":\"2018-07-20T00:00:00\",\n\t\"Category\":\"Work\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/v2/pickuplocations/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"v2",
+								"pickuplocations",
+								"1"
+							]
+						},
+						"description": "Calling version of get pick up location. Addition fields of peak hour block and average waiting time returned."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "fb2e7ad7-bac1-48f2-8b86-bb9b8e94c12f",
+					"name": "Get All Positive",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\" : \"1\",\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"LocationName\":\"School\",\n\t\"DateAdded\":\"2018-07-20T00:00:00\",\n\t\"Category\":\"Work\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations/1/allpickuplocations?page=1&pagesize=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations",
+								"1",
+								"allpickuplocations"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pagesize",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "b6ce5f66-8bad-4bca-bb82-4e5a2e4957d6",
+					"name": "Get All Positive XML",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							},
+							{
+								"key": "UserID",
+								"value": "1"
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\" : \"1\",\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"LocationName\":\"School\",\n\t\"DateAdded\":\"2018-07-20T00:00:00\",\n\t\"Category\":\"Work\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations/1/allpickuplocations?page=1&pagesize=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations",
+								"1",
+								"allpickuplocations"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pagesize",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Get all pick up locations for user ID and return XML."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "1583004e-eb1f-4dcb-8ec1-8dd8b2c924b7",
+					"name": "Get All Lite HATEOAS",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\" : \"1\",\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"LocationName\":\"School\",\n\t\"DateAdded\":\"2018-07-20T00:00:00\",\n\t\"Category\":\"Work\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations/1/allpickuplocationslite",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations",
+								"1",
+								"allpickuplocationslite"
+							]
+						},
+						"description": "Get all lite, HATEOAS"
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "a4053e0d-4a77-43ae-92f4-d8251707ea5f",
+					"name": "Update Positive",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\" : \"1\",\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"LocationName\":\"School\",\n\t\"DateAdded\":\"2018-08-10T00:00:00+08:00\",\n\t\"Category\":\"Work\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations",
+								"1"
+							]
+						},
+						"description": "Update positive test."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "7c704ba0-9fa5-4d32-a8bf-2b3a50cbd2ce",
+					"name": "Update Using Wrong Role",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\" : \"1\",\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"LocationName\":\"School\",\n\t\"DateAdded\":\"2018-08-10T00:00:00+08:00\",\n\t\"Category\":\"Work\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations",
+								"1"
+							]
+						},
+						"description": "Update using admin role. Return 401."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "44d818e1-7cc4-47a4-a5bb-807d32269edd",
+					"name": "Update Using Wrong ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\" : \"1\",\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"LocationName\":\"School\",\n\t\"DateAdded\":\"2018-08-10T00:00:00+08:00\",\n\t\"Category\":\"Work\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations",
+								"1"
+							]
+						},
+						"description": "Update for user ID not belonging to logged in user. Return 403."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "0fb0b921-7c3c-4bed-95f5-9e2b2c84b3e7",
+					"name": "Update Using Non ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"UserId\" : \"1\",\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"LocationName\":\"School\",\n\t\"DateAdded\":\"2018-08-10T00:00:00+08:00\",\n\t\"Category\":\"Work\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations",
+								"1"
+							]
+						},
+						"description": "Update ofr user ID not belonging in DB. Return 404."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "1f57c2f1-92f6-4a53-95f3-3de5f155b63f",
+					"name": "Delete Positive",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations",
+								"10"
+							]
+						},
+						"description": "Delete positive test."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "52d8d4af-74f1-41ea-a540-feae1278ecbf",
+					"name": "Delete Using Wrong Role",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations",
+								"1"
+							]
+						},
+						"description": "Delete using admin role. Return 401."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "eccb4a03-ebcd-4402-bc0e-df9cc9d3be66",
+					"name": "Delete Using Wrong ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "2"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations",
+								"1"
+							]
+						},
+						"description": "Delete for user ID not belonging to logged in user. Return 403."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "9eb90dbf-782e-42c1-b67f-c5646e510b8f",
+					"name": "Delete Using Non ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "3"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/pickuplocations/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"pickuplocations",
+								"1"
+							]
+						},
+						"description": "Delete for user ID not existing in DB. Return 404."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"_postman_id": "f6312a1c-bf5d-44e3-a7c2-0ad860b5e8ef",
+			"name": "Taxi Locations",
+			"item": [
+				{
+					"_postman_id": "634cb2fd-8d3e-498b-98fa-1cbb027df1d4",
+					"name": "Add Positive",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"TrackedDatetime\":\"2018-07-20T00:00:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/taxilocations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"taxilocations"
+							]
+						},
+						"description": "Add a taxi location to the taxi movement table."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "38299365-b6e5-4f0c-b872-6f38d5164245",
+					"name": "Appearance Probability",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"TrackedDatetime\":\"2018-07-20T00:00:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/taxilocations/appearance-probability?longitude=103.05&lattitude=1.45&hourofday=13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"taxilocations",
+								"appearance-probability"
+							],
+							"query": [
+								{
+									"key": "longitude",
+									"value": "103.05"
+								},
+								{
+									"key": "lattitude",
+									"value": "1.45"
+								},
+								{
+									"key": "hourofday",
+									"value": "13"
+								}
+							]
+						},
+						"description": "This will return the number of taxi available at the position and hour of day passed in."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "6effb710-b6f7-4949-9ae8-686931f9ae79",
+					"name": "Estimated Waiting Time",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"TrackedDatetime\":\"2018-07-20T00:00:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/taxilocations/estimated-waiting?longitude=103.05&lattitude=1.45&hourofday=13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"taxilocations",
+								"estimated-waiting"
+							],
+							"query": [
+								{
+									"key": "longitude",
+									"value": "103.05"
+								},
+								{
+									"key": "lattitude",
+									"value": "1.45"
+								},
+								{
+									"key": "hourofday",
+									"value": "13"
+								}
+							]
+						},
+						"description": "This will return the estimated time in minutes based on location passed in and hour of the day passed in."
+					},
+					"response": []
+				},
+				{
+					"_postman_id": "90ce71e3-e13b-450d-86d3-ff8caccc92da",
+					"name": "Next Best Locations",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserID",
+								"value": "1"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Lattitude\" : \"1.345482\",\n\t\"Longitude\":\"103.932405\",\n\t\"TrackedDatetime\":\"2018-07-20T00:00:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/TaxiApp/api/taxilocations/next-best-locations?longitude=103.05&lattitude=1.45&radius=1&hourofday=13&count=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"TaxiApp",
+								"api",
+								"taxilocations",
+								"next-best-locations"
+							],
+							"query": [
+								{
+									"key": "longitude",
+									"value": "103.05"
+								},
+								{
+									"key": "lattitude",
+									"value": "1.45"
+								},
+								{
+									"key": "radius",
+									"value": "1"
+								},
+								{
+									"key": "hourofday",
+									"value": "13"
+								},
+								{
+									"key": "count",
+									"value": "10"
+								}
+							]
+						},
+						"description": "This method will return a list of locations with their average waiting time and number of taxi available. The list is sorted by distance away from the passed in position."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
